@@ -46,7 +46,7 @@ Route::get('/operations/create', [OperationController::class, 'create'])->name('
 
 Route::post('/operations', [OperationController::class, 'store'])->name('operations.store');
 
-Route::get('/operations', [OperationController::class, 'index'])->name('operations.index');
+Route::get('/operations', [OperationController::class, 'operationsindex'])->name('operations.index');
 
 Route::middleware('auth')->group(function () {
     Route::resource('operations', OperationController::class);
