@@ -40,7 +40,7 @@ class OperationController extends Controller
     public function index()
     {
         $operations = Operation::with('user')->orderBy('operation_date_time', 'desc')->get();
-        return view('operations.operationsindex', compact('operations'));
+        return view('operations.index', compact('operations'));
     }
     public function edit(Operation $operation)
     {

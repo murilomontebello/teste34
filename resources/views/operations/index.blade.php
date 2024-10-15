@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('operations.layout')
 
 @section('content')
     <div class="container">
@@ -20,17 +20,13 @@
                                     Nenhuma operação registrada até o momento.
                                 </div>
                             @else
-                                <table class="table table-striped">
+                                <table class="table">
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>
                                             <th>Nome do Produto</th>
-                                            <th>
                                             <th>Operador</th>
-                                            <th>
                                             <th>Tipo de Operação</th>
-                                            <th>
                                             <th>Quantidade</th>
                                         </tr>
                                     </thead>
@@ -38,22 +34,21 @@
                                     @foreach($operations as $operation)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <th>
                                             <td>{{ $operation->product_name }}</td>
-                                            <th>
                                             <td>{{ $operation->user->name }}</td>
-                                            <th>
                                             <td>{{ ucfirst($operation->operation_type) }}</td>
-                                            <th>
                                             <td>{{ $operation->quantity }}</td>
                                             <td>
-                                            <td>
-                                                <a href="{{ route('operations.show', $operation->id) }}" title="Ver Operação"><button class="ml-3 inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 no-underline">
-                                                    <i class="fa fa-eye" aria-hidden="true"></i> Detalhes
-                                                </button></a>
-                                                <a href="{{ route('operations.edit', $operation->id) }}" title="Editar Operação"><button class="ml-3 inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 no-underline">
-                                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar
-                                                </button></a>
+                                                <a href="{{ route('operations.show', $operation->id) }}" title="Ver Operação">
+                                                    <button class="ml-3 inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 no-underline">
+                                                        <i class="fa fa-eye" aria-hidden="true"></i> Detalhes
+                                                    </button>
+                                                </a>
+                                                <a href="{{ route('operations.edit', $operation->id) }}" title="Editar Operação">
+                                                    <button class="ml-3 inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 no-underline">
+                                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar
+                                                    </button>
+                                                </a>
 
                                                 <form method="POST" action="{{ route('operations.destroy', $operation->id) }}" accept-charset="UTF-8" style="display:inline" onsubmit="return confirm('Tem certeza que deseja deletar esta operação?');">
                                                     {{ method_field('DELETE') }}
